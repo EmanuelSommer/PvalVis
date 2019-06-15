@@ -16,7 +16,7 @@
 #'  \item{greater}{The p-value will be calculated using \eqn{P(X \geq z) with X~N(\mu,\sigma^2)}}
 #'  \item{both}{The p-value will be calculated using \eqn{2*min(P(X \leq z),P(X \geq z)) with X~N(\mu,\sigma^2)} }
 #'  }
-#'  So for the frist three options a one sided hypothesis gets tested and for the last one a two sided hypothesis test is tested.
+#'  So for the first three options a one sided hypothesis gets tested and for the last one a two sided hypothesis is tested.
 #'
 #'
 #'
