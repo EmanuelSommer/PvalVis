@@ -8,7 +8,9 @@ norm_pval(z_value = 0, mean = 0, sd = 1, direction = c("extreme",
   "less", "greater", "both"))
 }
 \arguments{
-\item{z_value}{The value of a test statistic with the underlying normal distribution}
+\item{z_value}{The value of a test statistic with the underlying normal distribution
+
+(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 anyways)}
 
 \item{mean}{The mean of the underlying normal distribution (default is 0).}
 
@@ -16,7 +18,7 @@ norm_pval(z_value = 0, mean = 0, sd = 1, direction = c("extreme",
 
 \item{direction}{The 'direction' of the test with respect to z:
 \describe{
- \item{extreme}{The p-value will be calculated using \eqn{min(P(X \le z),P(X \ge z)) with X~N(\mu,\sigma^2)} }
+ \item{extreme (default)}{The p-value will be calculated using \eqn{min(P(X \le z),P(X \ge z)) with X~N(\mu,\sigma^2)} }
  \item{less}{The p-value will be calculated using \eqn{P(X \le z) with X~N(\mu,\sigma^2)}}
  \item{greater}{The p-value will be calculated using \eqn{P(X \ge z) with X~N(\mu,\sigma^2)}}
  \item{both}{The p-value will be calculated using \eqn{2*min(P(X \le z),P(X \ge z)) with X~N(\mu,\sigma^2)} }
@@ -27,7 +29,8 @@ norm_pval(z_value = 0, mean = 0, sd = 1, direction = c("extreme",
 a ggplot2 object displaying the results
 }
 \description{
-Given \eqn{z~N(\mu,\sigma^2)} the function calculates the p-value and visualizes the result as the area under the density function.
+Given \eqn{z ~ N(\mu,\sigma^2)} the function calculates the p-value and visualizes the result as the area under the density function.
+Furthermore the mean and the values one and two standard deviations from the mean are highlighted.
 }
 \examples{
 norm_pval(-2)

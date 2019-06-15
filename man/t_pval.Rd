@@ -8,13 +8,15 @@ t_pval(T_value = 0, df, direction = c("extreme", "less", "greater",
   "both"))
 }
 \arguments{
-\item{T_value}{The value of a test statistic with the underlying student-t distribution}
+\item{T_value}{The value of a test statistic with the underlying student-t distribution
+
+(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 anyways)}
 
 \item{df}{The degree of freedom of the underlying student-t distribution (only df greater than 2).}
 
 \item{direction}{The 'direction' of the test with respect to T:
 \describe{
- \item{extreme}{The p-value will be calculated using \eqn{min(P(X \le T),P(X \ge T)) with X~t(df)} }
+ \item{extreme (default)}{The p-value will be calculated using \eqn{min(P(X \le T),P(X \ge T)) with X~t(df)} }
  \item{less}{The p-value will be calculated using \eqn{P(X \le T) with X~t(df)}}
  \item{greater}{The p-value will be calculated using \eqn{P(X \ge T) with X~t(df)}}
  \item{both}{The p-value will be calculated using \eqn{2*min(P(X \le T),P(X \ge T)) with X~t(df)} }
@@ -25,7 +27,8 @@ t_pval(T_value = 0, df, direction = c("extreme", "less", "greater",
 a ggplot2 object displaying the results
 }
 \description{
-Given \eqn{T~t(df)} the function calculates the p-value and visualizes the result as the area under the density function.
+Given \eqn{T ~ t(df)} the function calculates the p-value and visualizes the result as the area under the density function.
+Furthermore the mean and the values one and two standard deviations from the mean are highlighted.
 }
 \examples{
 t_pval(-2,df=20)
