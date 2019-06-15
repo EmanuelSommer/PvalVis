@@ -8,10 +8,10 @@
 #' @param df The degree of freedom of the underlying student-t distribution (only df greater than 2).
 #' @param direction The 'direction' of the test with respect to T:
 #' \describe{
-#'  \item{extreme}{The p-value will be calculated using \eqn{min(P(X \leq T),P(X \geq T)) with X~t(df)} }
-#'  \item{less}{The p-value will be calculated using \eqn{P(X \leq T) with X~t(df)}}
-#'  \item{greater}{The p-value will be calculated using \eqn{P(X \geq T) with X~t(df)}}
-#'  \item{both}{The p-value will be calculated using \eqn{2*min(P(X \leq T),P(X \geq T)) with X~t(df)} }
+#'  \item{extreme}{The p-value will be calculated using \eqn{min(P(X \le T),P(X \ge T)) with X~t(df)} }
+#'  \item{less}{The p-value will be calculated using \eqn{P(X \le T) with X~t(df)}}
+#'  \item{greater}{The p-value will be calculated using \eqn{P(X \ge T) with X~t(df)}}
+#'  \item{both}{The p-value will be calculated using \eqn{2*min(P(X \le T),P(X \ge T)) with X~t(df)} }
 #'  }
 #'  So for the first three options a one sided hypothesis gets tested and for the last one a two sided hypothesis is tested.
 #'
@@ -23,7 +23,7 @@
 #' @author Emanuel Sommer
 #'
 #' @examples t_pval(-2,df=20)
-#' norm_pval(T_value = 1, df=10, direction = "both")
+#' t_pval(T_value = 1, df=10, direction = "both")
 t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
   require(ggplot2)
   z_value<-T_value

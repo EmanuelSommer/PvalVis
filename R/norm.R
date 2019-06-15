@@ -11,10 +11,10 @@
 #' @param sd The standard deviation of the underlying normal distribution (default is 1).
 #' @param direction The 'direction' of the test with respect to z:
 #' \describe{
-#'  \item{extreme}{The p-value will be calculated using \eqn{min(P(X \leq z),P(X \geq z)) with X~N(\mu,\sigma^2)} }
-#'  \item{less}{The p-value will be calculated using \eqn{P(X \leq z) with X~N(\mu,\sigma^2)}}
-#'  \item{greater}{The p-value will be calculated using \eqn{P(X \geq z) with X~N(\mu,\sigma^2)}}
-#'  \item{both}{The p-value will be calculated using \eqn{2*min(P(X \leq z),P(X \geq z)) with X~N(\mu,\sigma^2)} }
+#'  \item{extreme}{The p-value will be calculated using \eqn{min(P(X \le z),P(X \ge z)) with X~N(\mu,\sigma^2)} }
+#'  \item{less}{The p-value will be calculated using \eqn{P(X \le z) with X~N(\mu,\sigma^2)}}
+#'  \item{greater}{The p-value will be calculated using \eqn{P(X \ge z) with X~N(\mu,\sigma^2)}}
+#'  \item{both}{The p-value will be calculated using \eqn{2*min(P(X \le z),P(X \ge z)) with X~N(\mu,\sigma^2)} }
 #'  }
 #'  So for the first three options a one sided hypothesis gets tested and for the last one a two sided hypothesis is tested.
 #'
