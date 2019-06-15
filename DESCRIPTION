@@ -4,7 +4,7 @@ Title: A quick and easy way of visualizing p-values for basic hypothesis tests
 Version: 0.1.0
 Author: Emanuel Sommer
 Maintainer: Emanuel Sommer <emanuel.sommer@web.de>
-Description: The visualizations include the assumed density, the computed and the highlighted p-value. Currently the following underlying distributions are available: any Normal distribution.
+Description: The visualizations include the assumed density, the computed and the highlighted p-value. Currently the following underlying distributions are available: Normal distributions and student-t distributions.
 License: GPL-2
 Encoding: UTF-8
 Depends: R (>= 2.10)

@@ -2,15 +2,15 @@
 % Please edit documentation in R/t_dist.R
 \name{t_pval}
 \alias{t_pval}
-\title{Visualization of p-values for basic hypothesis tests with the student-t-distribution}
+\title{Visualization of p-values for basic hypothesis tests with the student-t distribution}
 \usage{
 t_pval(T_value = 0, df, direction = c("extreme", "less", "greater",
   "both"))
 }
 \arguments{
-\item{T_value}{The value of a test statistic with the underlying student-t-distribution}
+\item{T_value}{The value of a test statistic with the underlying student-t distribution}
 
-\item{df}{The degree of freedom of the underlying student-t-distribution (only df greater than 2).}
+\item{df}{The degree of freedom of the underlying student-t distribution (only df greater than 2).}
 
 \item{direction}{The 'direction' of the test with respect to T:
 \describe{

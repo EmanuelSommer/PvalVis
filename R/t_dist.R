@@ -1,11 +1,11 @@
 
 
-#' Visualization of p-values for basic hypothesis tests with the student-t-distribution
+#' Visualization of p-values for basic hypothesis tests with the student-t distribution
 #'
 #' Given \eqn{T~t(df)} the function calculates the p-value and visualizes the result as the area under the density function.
 #'
-#' @param T_value The value of a test statistic with the underlying student-t-distribution
-#' @param df The degree of freedom of the underlying student-t-distribution (only df greater than 2).
+#' @param T_value The value of a test statistic with the underlying student-t distribution
+#' @param df The degree of freedom of the underlying student-t distribution (only df greater than 2).
 #' @param direction The 'direction' of the test with respect to T:
 #' \describe{
 #'  \item{extreme}{The p-value will be calculated using \eqn{min(P(X \leq T),P(X \geq T)) with X~t(df)} }
