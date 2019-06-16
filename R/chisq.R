@@ -52,7 +52,7 @@ chisq_pval<-function(chisq_value=4,df=1){
              label=paste("\u03C72  value:",chisq_value,"\n", "p-value: ",P_val),
              #label=bquote(chi^2~"value:"~ .(chisq_value)~"p-value"~.(P_val)),
              col="blue")+
-    annotate("text",x=chisq_value,y=0,label="\u03C72 ",size=5.5)+
+    annotate("text",x=chisq_value,y=0,label="\u03C72 ",size=5.5,col="#333333")+
     scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
     scale_x_continuous(limits = c(max(0,(mean-5*sd)),mean+5*sd))+
     labs(x="",y="",title = paste("One sided hypothesis test with \u03C72 ~ \u03C72(",df,")")  )+

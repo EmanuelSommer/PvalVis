@@ -55,7 +55,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
                label=paste("T value:",z_value,"\n", "p-value: ",
                            round(pt(z_value,df=df,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="T",size=5.5)+
+      annotate("text",x=z_value,y=0,label="T",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with T ~ t(",df,")"))+
       theme_bw()
@@ -81,7 +81,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
                label=paste("T value:",z_value,"\n", "p-value: ",
                            round(pt(z_value,df=df,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="T",size=5.5)+
+      annotate("text",x=z_value,y=0,label="T",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with T ~ t(",df,")"))+
       theme_bw()
@@ -107,7 +107,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
                label=paste("T value:",z_value,"\n", "p-value: ",
                            round(pt(z_value,df=df,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="T",size=5.5)+
+      annotate("text",x=z_value,y=0,label="T",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with T ~ t(",df,")"))+
       theme_bw()
@@ -139,7 +139,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
                label=paste("T value:",z_value,"\n", "p-value: ",
                            round(2*pt((z_value),df=df,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="T",size=5.5)+
+      annotate("text",x=z_value,y=0,label="T",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("Two sided hypothesis test with T ~ t(",df,")"))+
       theme_bw()

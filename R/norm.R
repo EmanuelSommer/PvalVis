@@ -53,7 +53,7 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
                label=paste("z value:",z_value,"\n", "p-value: ",
                            round(pnorm(z_value,mean=mean,sd=sd,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5)+
+      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
       theme_bw()
@@ -79,7 +79,7 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
                label=paste("z value:",z_value,"\n", "p-value: ",
                            round(pnorm(z_value,mean=mean,sd=sd,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5)+
+      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
       theme_bw()
@@ -105,7 +105,7 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
                label=paste("z value:",z_value,"\n", "p-value: ",
                            round(pnorm(z_value,mean=mean,sd=sd,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5)+
+      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
       theme_bw()
@@ -137,7 +137,7 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
                label=paste("z value:",z_value,"\n", "p-value: ",
                            round(2*pnorm((z_value),mean=mean,sd=sd,lower.tail = z_logic),4)),
                col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5)+
+      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("Two sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
       theme_bw()

@@ -51,7 +51,7 @@ F_pval<-function(F_value=5,df1=3,df2=5){
              label=paste("F value:",F_value,"\n", "p-value: ",
                          round(pf(F_value,df1 = df1,df2 = df2,lower.tail = F),4)),
              col="blue")+
-    annotate("text",x=F_value,y=0,label="F",size=5.5,col="grey")+
+    annotate("text",x=F_value,y=0,label="F",size=5.5,col="#333333")+
     scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
     scale_x_continuous(limits = c(max(0,(mean-5*sd)),mean+5*sd))+
     labs(x="",y="",title = paste("One sided hypothesis test with F ~ F(",df1,",",df2,")"))+
