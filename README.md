@@ -12,7 +12,7 @@ The following underlying distributions are currently available:
  * F distributions (F_pval)
  * $\chi^2$ distributions (chisq_pval)
  
-For more inforation on each of the functions visit their individual help pages. For example:
+For more information on each of the functions visit their individual help pages. For example:
 
 ``` r
 library(PvalVis)
@@ -37,6 +37,6 @@ norm_pval(z_value=2.3,mean=0,sd=2,direction="both")
 F_pval(F_value = 3, df1 = 5, df2 = 30)
 ```
 
-
+As evident from the examples the first argument of each of the functions is the value of the test statistic. Then the parameters of the underlying distribution will be supplemented to the function and for the symmetric distributions one can then chose between a two sided and a one sided hypothesis tests with the direction argument.
 
 
