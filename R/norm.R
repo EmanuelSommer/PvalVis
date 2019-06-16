@@ -9,7 +9,7 @@
 #'
 #' @param z_value The value of a test statistic with the underlying normal distribution
 #'
-#' (values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 anyways)
+#' (values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 or 1 anyways)
 #' @param mean The mean of the underlying normal distribution (default is 0).
 #' @param sd The standard deviation of the underlying normal distribution (default is 1).
 #' @param direction The 'direction' of the test with respect to z:

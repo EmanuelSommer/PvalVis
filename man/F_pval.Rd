@@ -9,7 +9,7 @@ F_pval(F_value = 5, df1 = 3, df2 = 5)
 \arguments{
 \item{F_value}{The value of a test statistic with the underlying F distribution
 
-(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 anyways)}
+(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 or 1 anyways)}
 
 \item{df1}{The first degree of freedom of the underlying F distribution (only df1 greater than 2).}
 

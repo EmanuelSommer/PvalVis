@@ -10,7 +10,7 @@ norm_pval(z_value = 0, mean = 0, sd = 1, direction = c("extreme",
 \arguments{
 \item{z_value}{The value of a test statistic with the underlying normal distribution
 
-(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 anyways)}
+(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 or 1 anyways)}
 
 \item{mean}{The mean of the underlying normal distribution (default is 0).}
 

@@ -12,7 +12,7 @@
 #'
 #' @param F_value The value of a test statistic with the underlying F distribution
 #'
-#' (values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 anyways)
+#' (values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 or 1 anyways)
 #' @param df1 The first degree of freedom of the underlying F distribution (only df1 greater than 2).
 #' @param df2 The second degree of freedom of the underlying F distribution (only df2 greater than 4).
 #'
@@ -38,7 +38,7 @@ F_pval<-function(F_value=5,df1=3,df2=5){
   sd_bounds<-c(mean+sd,mean-sd,mean+2*sd,mean-2*sd)
   sd_bounds<-sd_bounds[sd_bounds>0]
 
-  new_data<-data.frame(a=0:(mean+5*sd))
+  new_data<-data.frame(a=max(0,(mean-5*sd)):(mean+5*sd))
   ggplot2::ggplot(new_data,aes(x=a))+
     stat_function(fun = df,args = list(df1=df1,df2=df2))+
     geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
@@ -53,7 +53,7 @@ F_pval<-function(F_value=5,df1=3,df2=5){
              col="blue")+
     annotate("text",x=F_value,y=0,label="F",size=5.5,col="grey")+
     scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
-    scale_x_continuous(limits = c(0,mean+5*sd))+
+    scale_x_continuous(limits = c(max(0,(mean-5*sd)),mean+5*sd))+
     labs(x="",y="",title = paste("One sided hypothesis test with F ~ F(",df1,",",df2,")"))+
     theme_bw()
 }

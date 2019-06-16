@@ -10,7 +10,7 @@ t_pval(T_value = 0, df, direction = c("extreme", "less", "greater",
 \arguments{
 \item{T_value}{The value of a test statistic with the underlying student-t distribution
 
-(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 anyways)}
+(values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 or 1 anyways)}
 
 \item{df}{The degree of freedom of the underlying student-t distribution (only df greater than 2).}
 
