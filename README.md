@@ -10,7 +10,7 @@ The following underlying distributions are currently available:
  * Normal distributions (norm_pval)
  * student-t distributions (t_pval)
  * F distributions (F_pval)
- * $\chi^2$ distributions (chisq_pval)
+ * χ2 distributions (chisq_pval)
  
 For more information on each of the functions visit their individual help pages. For example:
 
@@ -29,7 +29,7 @@ devtools::install_github("EmanuelSommer/PvalVis")
 
 ## Example
 
-These are basic examples which show you how the functions display and highlight the p-values and the assumed density:
+These are basic examples which show you how the functions to display and highlight the p-values and the assumed density are used in practice:
 
 ``` r
 library(PvalVis)
