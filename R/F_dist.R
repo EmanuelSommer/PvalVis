@@ -44,7 +44,7 @@ F_pval<-function(F_value=5,df1=3,df2=5){
     geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
     geom_vline(xintercept = sd_bounds,linetype="dotted",
                col="#990000")+
-    geom_area(stat = "function", fun = df,args = list(df1=df1,df2=df2), fill = "blue",
+    geom_area(stat = "function", fun = "df",args = list(df1=df1,df2=df2), fill = "blue",
               alpha=0.3,
               xlim = bounds)+
     annotate("text",x=(mean+4*sd),y=0.75*df(mean,df1 = df1,df2 = df2),
