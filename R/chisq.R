@@ -56,7 +56,14 @@ chisq_pval<-function(chisq_value=4,df=1){
     scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
     scale_x_continuous(limits = c(max(0,(mean-5*sd)),mean+5*sd))+
     labs(x="",y="",title = paste("One sided hypothesis test with \u03C72 ~ \u03C72(",df,")")  )+
-    theme_bw()
+    theme(legend.position="bottom",
+          panel.background = element_rect(fill = "white",
+                                          colour = NA),
+          panel.grid = element_line(colour = "grey92"),
+          panel.border = element_rect(fill = NA,
+                                      colour = "grey20"),
+          legend.key = element_rect(fill = "white",
+                                    colour = NA))
 }
 
 

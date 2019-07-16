@@ -13,7 +13,7 @@
 #' @param F_value The value of a test statistic with the underlying F distribution
 #'
 #' (values that are very far away from the mean - roughly more than 4 times the standard deviation - are not recommend to use as the p-value will be approximately 0 or 1 anyways)
-#' @param df1 The first degree of freedom of the underlying F distribution (only df1 greater than 2).
+#' @param df1 The first degree of freedom of the underlying F distribution (only df1 greater than 1).
 #' @param df2 The second degree of freedom of the underlying F distribution (only df2 greater than 4).
 #'
 #' @return a ggplot2 object displaying the results
@@ -26,8 +26,8 @@
 F_pval<-function(F_value=5,df1=3,df2=5){
   require(ggplot2)
   if(F_value<0){stop("This F value is not possible.")}
-  if(df1<3){stop("This df1 is not possible.")}
-  if(df2<5){stop("This df2 is not possible.")}
+  if(df1<2){stop("This df1 is not possible in this implementation.")}
+  if(df2<5){stop("This df2 is not possible in this implementation.")}
 
   cols<-c("mean"="#990000")
   mean<-(df2/(df2-2))
@@ -55,7 +55,14 @@ F_pval<-function(F_value=5,df1=3,df2=5){
     scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
     scale_x_continuous(limits = c(max(0,(mean-5*sd)),mean+5*sd))+
     labs(x="",y="",title = paste("One sided hypothesis test with F ~ F(",df1,",",df2,")"))+
-    theme_bw()
+    theme(legend.position="bottom",
+          panel.background = element_rect(fill = "white",
+                                          colour = NA),
+          panel.grid = element_line(colour = "grey92"),
+          panel.border = element_rect(fill = NA,
+                                      colour = "grey20"),
+          legend.key = element_rect(fill = "white",
+                                    colour = NA))
 }
 
 

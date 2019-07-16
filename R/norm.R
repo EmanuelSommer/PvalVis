@@ -56,7 +56,14 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
       annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme_bw()
+      theme(legend.position="bottom",
+            panel.background = element_rect(fill = "white",
+                                            colour = NA),
+            panel.grid = element_line(colour = "grey92"),
+            panel.border = element_rect(fill = NA,
+                                        colour = "grey20"),
+            legend.key = element_rect(fill = "white",
+                                      colour = NA))
 
 
   }else if(direction=="less"){
@@ -82,7 +89,14 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
       annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme_bw()
+      theme(legend.position="bottom",
+            panel.background = element_rect(fill = "white",
+                                            colour = NA),
+            panel.grid = element_line(colour = "grey92"),
+            panel.border = element_rect(fill = NA,
+                                        colour = "grey20"),
+            legend.key = element_rect(fill = "white",
+                                      colour = NA))
 
 
   }else if(direction=="greater"){
@@ -108,7 +122,14 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
       annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme_bw()
+      theme(legend.position="bottom",
+            panel.background = element_rect(fill = "white",
+                                            colour = NA),
+            panel.grid = element_line(colour = "grey92"),
+            panel.border = element_rect(fill = NA,
+                                        colour = "grey20"),
+            legend.key = element_rect(fill = "white",
+                                      colour = NA))
 
 
   }else if(direction=="both"){
@@ -140,7 +161,14 @@ norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater"
       annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
       scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
       labs(x="",y="",title = paste("Two sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme_bw()
+      theme(legend.position="bottom",
+            panel.background = element_rect(fill = "white",
+                                            colour = NA),
+            panel.grid = element_line(colour = "grey92"),
+            panel.border = element_rect(fill = NA,
+                                        colour = "grey20"),
+            legend.key = element_rect(fill = "white",
+                                      colour = NA))
   }else{
     error("This is not a valid direction.")
   }
