@@ -24,7 +24,6 @@
 #' @examples F_pval()
 #' F_pval(F_value = 3, df1 = 5, df2 = 30)
 F_pval<-function(F_value=5,df1=3,df2=5){
-  require(ggplot2)
   if(F_value<0){stop("This F value is not possible.")}
   if(df1<2){stop("This df1 is not possible in this implementation.")}
   if(df2<5){stop("This df2 is not possible in this implementation.")}

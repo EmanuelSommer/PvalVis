@@ -31,7 +31,6 @@
 #' @examples norm_pval(-2)
 #' norm_pval(z_value = 100, mean = 120, sd = 20, direction = "both")
 norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater","both")){
-  require(ggplot2)
   direction<-match.arg(direction)
   if(direction=="extreme"){
     cols<-c("mean"="#990000")

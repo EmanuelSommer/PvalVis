@@ -23,7 +23,6 @@
 #' @examples chisq_pval()
 #' chisq_pval(chisq_value = 23, df = 15)
 chisq_pval<-function(chisq_value=4,df=1){
-  require(ggplot2)
   if(chisq_value<0){stop("This chisq value is not possible.")}
   if(df<1){stop("This df is not possible.")}
 

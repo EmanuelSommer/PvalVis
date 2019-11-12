@@ -29,7 +29,6 @@
 #' @examples t_pval(-2,df=20)
 #' t_pval(T_value = 1, df=10, direction = "both")
 t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
-  require(ggplot2)
   z_value<-T_value
   if(df<3){stop("This is not a possible degree of freedom.")}
   mean<-0
