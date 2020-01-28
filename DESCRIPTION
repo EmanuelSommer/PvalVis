@@ -3,7 +3,7 @@ Type: Package
 Title: A quick and easy way of visualizing p-values for basic hypothesis tests
 Version: 0.1.0
 Author: Emanuel Sommer
-Maintainer: Emanuel Sommer <emanuel.sommer@web.de>
+Maintainer: Emanuel Sommer 
 Description: The visualizations include the assumed density, the computed and the highlighted p-value. Currently the following underlying distributions of test statistic are available: Normal distributions, student-t distributions, F distributions and chi squared distributions.
 License: GPL-2
 Encoding: UTF-8
