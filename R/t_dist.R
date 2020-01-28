@@ -42,7 +42,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
     }else{
       bounds<-c(z_value,mean+5*sd)}
     new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot2::ggplot(new_data,aes(x=a))+
+    ggplot(new_data,aes(x=a))+
       stat_function(fun = dt,args = list(df=df))+
       geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
       geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",
@@ -75,7 +75,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
     }else{
       bounds<-c(z_value,mean+5*sd)}
     new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot2::ggplot(new_data,aes(x=a))+
+    ggplot(new_data,aes(x=a))+
       stat_function(fun = dt,args = list(df=df))+
       geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
       geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",
@@ -108,7 +108,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
     }else{
       bounds<-c(z_value,mean+5*sd)}
     new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot2::ggplot(new_data,aes(x=a))+
+    ggplot(new_data,aes(x=a))+
       stat_function(fun = dt,args = list(df=df))+
       geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
       geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",
@@ -144,7 +144,7 @@ t_pval<-function(T_value=0,df,direction=c("extreme","less","greater","both")){
       zupper<-z_value
     }
     new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot2::ggplot(new_data,aes(x=a))+
+    ggplot(new_data,aes(x=a))+
       stat_function(fun = dt,args = list(df=df))+
       geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
       geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",

@@ -38,7 +38,7 @@ F_pval<-function(F_value=5,df1=3,df2=5){
   sd_bounds<-sd_bounds[sd_bounds>0]
 
   new_data<-data.frame(a=max(0,(mean-5*sd)):(mean+5*sd))
-  ggplot2::ggplot(new_data,aes(x=a))+
+  ggplot(new_data,aes(x=a))+
     stat_function(fun = "df",args = list(df1=df1,df2=df2))+
     geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
     geom_vline(xintercept = sd_bounds,linetype="dotted",

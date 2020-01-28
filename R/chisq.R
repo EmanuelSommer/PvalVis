@@ -39,7 +39,7 @@ chisq_pval<-function(chisq_value=4,df=1){
 
   P_val<-round(pchisq(chisq_value,df = df,lower.tail = F),4)
 
-  ggplot2::ggplot(new_data,aes(x=a))+
+  ggplot(new_data,aes(x=a))+
     stat_function(fun = dchisq,args = list(df=df))+
     geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
     geom_vline(xintercept = sd_bounds,linetype="dotted",
