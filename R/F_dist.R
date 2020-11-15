@@ -21,50 +21,68 @@
 #' @import ggplot2
 #' @author Emanuel Sommer
 #'
-#' @examples F_pval()
+#' @examples
+#' F_pval()
 #' F_pval(F_value = 3, df1 = 5, df2 = 30)
-F_pval<-function(F_value=5,df1=3,df2=5){
-  if(F_value<0){stop("This F value is not possible.")}
-  if(df1<2){stop("This df1 is not possible in this implementation.")}
-  if(df2<5){stop("This df2 is not possible in this implementation.")}
+F_pval <- function(F_value = 5, df1 = 3, df2 = 5) {
+  if (F_value < 0) {
+    stop("This F value is not possible.")
+  }
+  if (df1 < 2) {
+    stop("This df1 is not possible in this implementation.")
+  }
+  if (df2 < 5) {
+    stop("This df2 is not possible in this implementation.")
+  }
 
-  cols<-c("mean"="#990000")
-  mean<-(df2/(df2-2))
-  sd<-sqrt((2*df2^2*(df1+df2-2))/(df1*((df2-2)^2)*(df2-4)))
+  cols <- c("mean" = "#990000")
+  mean <- (df2 / (df2 - 2))
+  sd <- sqrt((2 * df2^2 * (df1 + df2 - 2)) / (df1 * ((df2 - 2)^2) * (df2 - 4)))
 
-  bounds<-c(F_value,mean+5*sd)
+  bounds <- c(F_value, mean + 5 * sd)
 
-  sd_bounds<-c(mean+sd,mean-sd,mean+2*sd,mean-2*sd)
-  sd_bounds<-sd_bounds[sd_bounds>0]
+  sd_bounds <- c(mean + sd, mean - sd, mean + 2 * sd, mean - 2 * sd)
+  sd_bounds <- sd_bounds[sd_bounds > 0]
 
-  new_data<-data.frame(a=max(0,(mean-5*sd)):(mean+5*sd))
-  ggplot(new_data,aes(x=a))+
-    stat_function(fun = "df",args = list(df1=df1,df2=df2))+
-    geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
-    geom_vline(xintercept = sd_bounds,linetype="dotted",
-               col="#990000")+
-    geom_area(stat = "function", fun = "df",args = list(df1=df1,df2=df2), fill = "blue",
-              alpha=0.3,
-              xlim = bounds)+
-    annotate("text",x=(mean+4*sd),y=0.75*df(mean,df1 = df1,df2 = df2),
-             label=paste("F value:",F_value,"\n", "p-value: ",
-                         round(pf(F_value,df1 = df1,df2 = df2,lower.tail = F),4)),
-             col="blue")+
-    annotate("text",x=F_value,y=0,label="F",size=5.5,col="#333333")+
-    scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
-    scale_x_continuous(limits = c(max(0,(mean-5*sd)),mean+5*sd))+
-    labs(x="",y="",title = paste("One sided hypothesis test with F ~ F(",df1,",",df2,")"))+
-    theme(legend.position="bottom",
-          panel.background = element_rect(fill = "white",
-                                          colour = NA),
-          panel.grid = element_line(colour = "grey92"),
-          panel.border = element_rect(fill = NA,
-                                      colour = "grey20"),
-          legend.key = element_rect(fill = "white",
-                                    colour = NA))
+  new_data <- data.frame(a = max(0, (mean - 5 * sd)):(mean + 5 * sd))
+  ggplot(new_data, aes(x = a)) +
+    stat_function(fun = "df", args = list(df1 = df1, df2 = df2)) +
+    geom_point(aes(x = mean, y = 0, col = "mean"), size = 4, shape = 17) +
+    geom_vline(
+      xintercept = sd_bounds, linetype = "dotted",
+      col = "#990000"
+    ) +
+    geom_area(
+      stat = "function", fun = "df", args = list(df1 = df1, df2 = df2), fill = "blue",
+      alpha = 0.3,
+      xlim = bounds
+    ) +
+    annotate("text",
+      x = (mean + 4 * sd), y = 0.75 * df(mean, df1 = df1, df2 = df2),
+      label = paste(
+        "F value:", F_value, "\n", "p-value: ",
+        round(pf(F_value, df1 = df1, df2 = df2, lower.tail = F), 4)
+      ),
+      col = "blue"
+    ) +
+    annotate("text", x = F_value, y = 0, label = "F", size = 5.5, col = "#333333") +
+    scale_color_manual(name = "", values = cols, labels = "mean & dotted sd", position = "bottom") +
+    scale_x_continuous(limits = c(max(0, (mean - 5 * sd)), mean + 5 * sd)) +
+    labs(x = "", y = "", title = paste("One sided hypothesis test with F ~ F(", df1, ",", df2, ")")) +
+    theme(
+      legend.position = "bottom",
+      panel.background = element_rect(
+        fill = "white",
+        colour = NA
+      ),
+      panel.grid = element_line(colour = "grey92"),
+      panel.border = element_rect(
+        fill = NA,
+        colour = "grey20"
+      ),
+      legend.key = element_rect(
+        fill = "white",
+        colour = NA
+      )
+    )
 }
-
-
-
-
-

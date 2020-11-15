@@ -28,175 +28,211 @@
 #' @import ggplot2
 #' @author Emanuel Sommer
 #'
-#' @examples norm_pval(-2)
+#' @examples
+#' norm_pval(-2)
 #' norm_pval(z_value = 100, mean = 120, sd = 20, direction = "both")
-norm_pval<-function(z_value=0,mean=0,sd=1,direction=c("extreme","less","greater","both")){
-  direction<-match.arg(direction)
-  if(direction=="extreme"){
-    cols<-c("mean"="#990000")
-    z_logic<-ifelse(z_value>=mean,FALSE,TRUE)
-    if(z_logic){
-      bounds<-c(mean-5*sd,z_value)
-    }else{
-      bounds<-c(z_value,mean+5*sd)}
-    new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot(new_data,aes(x=a))+
-      stat_function(fun = dnorm,args = list(mean=mean,sd=sd))+
-      geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
-      geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",
-                 col="#990000")+
-      geom_area(stat = "function", fun = dnorm,args = list(mean=mean,sd=sd), fill = "blue",
-                alpha=0.3,
-                xlim = bounds)+
-      annotate("text",x=(mean+4*sd),y=0.75*dnorm(mean,mean = mean,sd=sd),
-               label=paste("z value:",z_value,"\n", "p-value: ",
-                           round(pnorm(z_value,mean=mean,sd=sd,lower.tail = z_logic),4)),
-               col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
-      scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
-      labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme(legend.position="bottom",
-            panel.background = element_rect(fill = "white",
-                                            colour = NA),
-            panel.grid = element_line(colour = "grey92"),
-            panel.border = element_rect(fill = NA,
-                                        colour = "grey20"),
-            legend.key = element_rect(fill = "white",
-                                      colour = NA))
-
-
-  }else if(direction=="less"){
-    cols<-c("mean"="#990000")
-    z_logic<-TRUE
-    if(z_logic){
-      bounds<-c(mean-5*sd,z_value)
-    }else{
-      bounds<-c(z_value,mean+5*sd)}
-    new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot(new_data,aes(x=a))+
-      stat_function(fun = dnorm,args = list(mean=mean,sd=sd))+
-      geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
-      geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",
-                 col="#990000")+
-      geom_area(stat = "function", fun = dnorm,args = list(mean=mean,sd=sd), fill = "blue",
-                alpha=0.3,
-                xlim = bounds)+
-      annotate("text",x=(mean+4*sd),y=0.75*dnorm(mean,mean = mean,sd=sd),
-               label=paste("z value:",z_value,"\n", "p-value: ",
-                           round(pnorm(z_value,mean=mean,sd=sd,lower.tail = z_logic),4)),
-               col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
-      scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
-      labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme(legend.position="bottom",
-            panel.background = element_rect(fill = "white",
-                                            colour = NA),
-            panel.grid = element_line(colour = "grey92"),
-            panel.border = element_rect(fill = NA,
-                                        colour = "grey20"),
-            legend.key = element_rect(fill = "white",
-                                      colour = NA))
-
-
-  }else if(direction=="greater"){
-    cols<-c("mean"="#990000")
-    z_logic<-FALSE
-    if(z_logic){
-      bounds<-c(mean-5*sd,z_value)
-    }else{
-      bounds<-c(z_value,mean+5*sd)}
-    new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot(new_data,aes(x=a))+
-      stat_function(fun = dnorm,args = list(mean=mean,sd=sd))+
-      geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
-      geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",
-                 col="#990000")+
-      geom_area(stat = "function", fun = dnorm,args = list(mean=mean,sd=sd), fill = "blue",
-                alpha=0.3,
-                xlim = bounds)+
-      annotate("text",x=(mean+4*sd),y=0.75*dnorm(mean,mean = mean,sd=sd),
-               label=paste("z value:",z_value,"\n", "p-value: ",
-                           round(pnorm(z_value,mean=mean,sd=sd,lower.tail = z_logic),4)),
-               col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
-      scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
-      labs(x="",y="",title = paste("One sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme(legend.position="bottom",
-            panel.background = element_rect(fill = "white",
-                                            colour = NA),
-            panel.grid = element_line(colour = "grey92"),
-            panel.border = element_rect(fill = NA,
-                                        colour = "grey20"),
-            legend.key = element_rect(fill = "white",
-                                      colour = NA))
-
-
-  }else if(direction=="both"){
-    cols<-c("mean"="#990000")
-    z_logic<-ifelse(z_value>=mean,FALSE,TRUE)
-    if(z_logic){
-      zlower<-z_value
-      zupper<-mean+abs(mean-z_value)
-    }else{
-      zlower<-mean-abs(mean-z_value)
-      zupper<-z_value
+norm_pval <- function(z_value = 0, mean = 0, sd = 1, direction = c("extreme", "less", "greater", "both")) {
+  direction <- match.arg(direction)
+  if (direction == "extreme") {
+    cols <- c("mean" = "#990000")
+    z_logic <- ifelse(z_value >= mean, FALSE, TRUE)
+    if (z_logic) {
+      bounds <- c(mean - 5 * sd, z_value)
+    } else {
+      bounds <- c(z_value, mean + 5 * sd)
     }
-    new_data<-data.frame(a=(mean-5*sd):(mean+5*sd))
-    ggplot(new_data,aes(x=a))+
-      stat_function(fun = dnorm,args = list(mean=mean,sd=sd))+
-      geom_point(aes(x=mean,y=0,col="mean"),size=4,shape=17)+
-      geom_vline(xintercept = c(mean+sd,mean-sd,mean+2*sd,mean-2*sd),linetype="dotted",
-                 col="#990000")+
-      geom_area(stat = "function", fun = dnorm,args = list(mean=mean,sd=sd), fill = "blue",
-                alpha=0.3,
-                xlim = c(mean-5*sd,zlower))+
-      geom_area(stat = "function", fun = dnorm,args = list(mean=mean,sd=sd), fill = "blue",
-                alpha=0.3,
-                xlim = c(zupper,mean+5*sd))+
-      annotate("text",x=(mean+4*sd),y=0.75*dnorm(mean,mean = mean,sd=sd),
-               label=paste("z value:",z_value,"\n", "p-value: ",
-                           round(2*pnorm((z_value),mean=mean,sd=sd,lower.tail = z_logic),4)),
-               col="blue")+
-      annotate("text",x=z_value,y=0,label="z",size=5.5,col="#333333")+
-      scale_color_manual(name="",values=cols,labels="mean & dotted sd",position="bottom")+
-      labs(x="",y="",title = paste("Two sided hypothesis test with z ~ N(",mean,",",sd^2,")"))+
-      theme(legend.position="bottom",
-            panel.background = element_rect(fill = "white",
-                                            colour = NA),
-            panel.grid = element_line(colour = "grey92"),
-            panel.border = element_rect(fill = NA,
-                                        colour = "grey20"),
-            legend.key = element_rect(fill = "white",
-                                      colour = NA))
-  }else{
+    new_data <- data.frame(a = (mean - 5 * sd):(mean + 5 * sd))
+    ggplot(new_data, aes(x = a)) +
+      stat_function(fun = dnorm, args = list(mean = mean, sd = sd)) +
+      geom_point(aes(x = mean, y = 0, col = "mean"), size = 4, shape = 17) +
+      geom_vline(
+        xintercept = c(mean + sd, mean - sd, mean + 2 * sd, mean - 2 * sd), linetype = "dotted",
+        col = "#990000"
+      ) +
+      geom_area(
+        stat = "function", fun = dnorm, args = list(mean = mean, sd = sd), fill = "blue",
+        alpha = 0.3,
+        xlim = bounds
+      ) +
+      annotate("text",
+        x = (mean + 4 * sd), y = 0.75 * dnorm(mean, mean = mean, sd = sd),
+        label = paste(
+          "z value:", z_value, "\n", "p-value: ",
+          round(pnorm(z_value, mean = mean, sd = sd, lower.tail = z_logic), 4)
+        ),
+        col = "blue"
+      ) +
+      annotate("text", x = z_value, y = 0, label = "z", size = 5.5, col = "#333333") +
+      scale_color_manual(name = "", values = cols, labels = "mean & dotted sd", position = "bottom") +
+      labs(x = "", y = "", title = paste("One sided hypothesis test with z ~ N(", mean, ",", sd^2, ")")) +
+      theme(
+        legend.position = "bottom",
+        panel.background = element_rect(
+          fill = "white",
+          colour = NA
+        ),
+        panel.grid = element_line(colour = "grey92"),
+        panel.border = element_rect(
+          fill = NA,
+          colour = "grey20"
+        ),
+        legend.key = element_rect(
+          fill = "white",
+          colour = NA
+        )
+      )
+  } else if (direction == "less") {
+    cols <- c("mean" = "#990000")
+    z_logic <- TRUE
+    if (z_logic) {
+      bounds <- c(mean - 5 * sd, z_value)
+    } else {
+      bounds <- c(z_value, mean + 5 * sd)
+    }
+    new_data <- data.frame(a = (mean - 5 * sd):(mean + 5 * sd))
+    ggplot(new_data, aes(x = a)) +
+      stat_function(fun = dnorm, args = list(mean = mean, sd = sd)) +
+      geom_point(aes(x = mean, y = 0, col = "mean"), size = 4, shape = 17) +
+      geom_vline(
+        xintercept = c(mean + sd, mean - sd, mean + 2 * sd, mean - 2 * sd), linetype = "dotted",
+        col = "#990000"
+      ) +
+      geom_area(
+        stat = "function", fun = dnorm, args = list(mean = mean, sd = sd), fill = "blue",
+        alpha = 0.3,
+        xlim = bounds
+      ) +
+      annotate("text",
+        x = (mean + 4 * sd), y = 0.75 * dnorm(mean, mean = mean, sd = sd),
+        label = paste(
+          "z value:", z_value, "\n", "p-value: ",
+          round(pnorm(z_value, mean = mean, sd = sd, lower.tail = z_logic), 4)
+        ),
+        col = "blue"
+      ) +
+      annotate("text", x = z_value, y = 0, label = "z", size = 5.5, col = "#333333") +
+      scale_color_manual(name = "", values = cols, labels = "mean & dotted sd", position = "bottom") +
+      labs(x = "", y = "", title = paste("One sided hypothesis test with z ~ N(", mean, ",", sd^2, ")")) +
+      theme(
+        legend.position = "bottom",
+        panel.background = element_rect(
+          fill = "white",
+          colour = NA
+        ),
+        panel.grid = element_line(colour = "grey92"),
+        panel.border = element_rect(
+          fill = NA,
+          colour = "grey20"
+        ),
+        legend.key = element_rect(
+          fill = "white",
+          colour = NA
+        )
+      )
+  } else if (direction == "greater") {
+    cols <- c("mean" = "#990000")
+    z_logic <- FALSE
+    if (z_logic) {
+      bounds <- c(mean - 5 * sd, z_value)
+    } else {
+      bounds <- c(z_value, mean + 5 * sd)
+    }
+    new_data <- data.frame(a = (mean - 5 * sd):(mean + 5 * sd))
+    ggplot(new_data, aes(x = a)) +
+      stat_function(fun = dnorm, args = list(mean = mean, sd = sd)) +
+      geom_point(aes(x = mean, y = 0, col = "mean"), size = 4, shape = 17) +
+      geom_vline(
+        xintercept = c(mean + sd, mean - sd, mean + 2 * sd, mean - 2 * sd), linetype = "dotted",
+        col = "#990000"
+      ) +
+      geom_area(
+        stat = "function", fun = dnorm, args = list(mean = mean, sd = sd), fill = "blue",
+        alpha = 0.3,
+        xlim = bounds
+      ) +
+      annotate("text",
+        x = (mean + 4 * sd), y = 0.75 * dnorm(mean, mean = mean, sd = sd),
+        label = paste(
+          "z value:", z_value, "\n", "p-value: ",
+          round(pnorm(z_value, mean = mean, sd = sd, lower.tail = z_logic), 4)
+        ),
+        col = "blue"
+      ) +
+      annotate("text", x = z_value, y = 0, label = "z", size = 5.5, col = "#333333") +
+      scale_color_manual(name = "", values = cols, labels = "mean & dotted sd", position = "bottom") +
+      labs(x = "", y = "", title = paste("One sided hypothesis test with z ~ N(", mean, ",", sd^2, ")")) +
+      theme(
+        legend.position = "bottom",
+        panel.background = element_rect(
+          fill = "white",
+          colour = NA
+        ),
+        panel.grid = element_line(colour = "grey92"),
+        panel.border = element_rect(
+          fill = NA,
+          colour = "grey20"
+        ),
+        legend.key = element_rect(
+          fill = "white",
+          colour = NA
+        )
+      )
+  } else if (direction == "both") {
+    cols <- c("mean" = "#990000")
+    z_logic <- ifelse(z_value >= mean, FALSE, TRUE)
+    if (z_logic) {
+      zlower <- z_value
+      zupper <- mean + abs(mean - z_value)
+    } else {
+      zlower <- mean - abs(mean - z_value)
+      zupper <- z_value
+    }
+    new_data <- data.frame(a = (mean - 5 * sd):(mean + 5 * sd))
+    ggplot(new_data, aes(x = a)) +
+      stat_function(fun = dnorm, args = list(mean = mean, sd = sd)) +
+      geom_point(aes(x = mean, y = 0, col = "mean"), size = 4, shape = 17) +
+      geom_vline(
+        xintercept = c(mean + sd, mean - sd, mean + 2 * sd, mean - 2 * sd), linetype = "dotted",
+        col = "#990000"
+      ) +
+      geom_area(
+        stat = "function", fun = dnorm, args = list(mean = mean, sd = sd), fill = "blue",
+        alpha = 0.3,
+        xlim = c(mean - 5 * sd, zlower)
+      ) +
+      geom_area(
+        stat = "function", fun = dnorm, args = list(mean = mean, sd = sd), fill = "blue",
+        alpha = 0.3,
+        xlim = c(zupper, mean + 5 * sd)
+      ) +
+      annotate("text",
+        x = (mean + 4 * sd), y = 0.75 * dnorm(mean, mean = mean, sd = sd),
+        label = paste(
+          "z value:", z_value, "\n", "p-value: ",
+          round(2 * pnorm((z_value), mean = mean, sd = sd, lower.tail = z_logic), 4)
+        ),
+        col = "blue"
+      ) +
+      annotate("text", x = z_value, y = 0, label = "z", size = 5.5, col = "#333333") +
+      scale_color_manual(name = "", values = cols, labels = "mean & dotted sd", position = "bottom") +
+      labs(x = "", y = "", title = paste("Two sided hypothesis test with z ~ N(", mean, ",", sd^2, ")")) +
+      theme(
+        legend.position = "bottom",
+        panel.background = element_rect(
+          fill = "white",
+          colour = NA
+        ),
+        panel.grid = element_line(colour = "grey92"),
+        panel.border = element_rect(
+          fill = NA,
+          colour = "grey20"
+        ),
+        legend.key = element_rect(
+          fill = "white",
+          colour = NA
+        )
+      )
+  } else {
     error("This is not a valid direction.")
   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
